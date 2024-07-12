@@ -3,6 +3,7 @@
 # Contains class definitions to implement a USB keyboard.
 
 import struct
+import random
 import time
 from umap2.core.usb import DescriptorType
 from umap2.core.usb_class import USBClass
@@ -89,6 +90,7 @@ class USBKeyboardInterface(USBInterface):
         text = [0x0f, 0x00, 0x16, 0x00, 0x28, 0x00]
 
         self.keys = [chr(x) for x in empty_preamble + text]
+        
         self.call_count = 0
         self.first_call = None
 
@@ -178,10 +180,11 @@ class USBKeyboardInterface(USBInterface):
             self.first_call = time.time()
         if time.time() - self.first_call > 2:
             self.usb_function_supported('buffer available for keyboard report')
-            if self.keys:
-                letter = self.keys.pop(0)
-            else:
-                letter = '\x00'
+            #if self.keys:
+            #    letter = self.keys.pop(0)
+            #else:
+            #    letter = '\x00'
+            letter = chr(random.randint(33,126))
             self.type_letter(letter)
 
     def type_letter(self, letter, modifiers=0):

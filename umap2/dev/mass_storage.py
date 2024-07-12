@@ -391,7 +391,7 @@ class ScsiDevice(USBBaseActor):
         if report is None:
             # default behaviour, taken from previous implementation
             # this should probably be changed ...
-            report = '\x07\x00\x00\x00\x00\x00\x00\x00'
+            report = b'\x07\x00\x00\x00\x00\x00\x00\x00'
         if with_header:
             self.debug('SCSI mode sense (%d) - adding header' % (mode_type))
             report = self._report_header(mode_type, len(report)) + report

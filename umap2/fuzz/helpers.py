@@ -22,7 +22,7 @@ class StageLogger(object):
 
     def log_stage(self, stage):
         if self.fd:
-            self.fd.write(stage + '\n')
+            self.fd.write((stage + '\n').encode())
             self.fd.flush()
 
 

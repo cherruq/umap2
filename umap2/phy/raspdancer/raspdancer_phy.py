@@ -171,6 +171,7 @@ class RaspdancerPhy(PhyInterface):
 
     def service_irqs(self):
         while not self.stop:
+            
             irq = self.read_register(Regs.endpoint_irq)
 
             self.verbose('read endpoint irq: 0x%02x' % irq)

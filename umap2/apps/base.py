@@ -1,6 +1,7 @@
 '''
 Umap2 applications should subclass the Umap2App.
 '''
+
 import sys
 import os
 import importlib
@@ -8,9 +9,13 @@ import logging
 import docopt
 from serial import Serial, PARITY_NONE
 
+print(sys.path)
+
 from umap2.phy.facedancer.max342x_phy import Max342xPhy
 from umap2.phy.gadgetfs.gadgetfs_phy import GadgetFsPhy
 from umap2.utils.ulogger import set_default_handler_level
+#from umap2.apps.mass_storage_fuzz import *
+
 
 
 class Umap2App(object):
@@ -139,8 +144,6 @@ class Umap2App(object):
         '''
         pass
 
-    def get_mutation(self, stage, data=None):
-        '''
-        mutation is only needed when fuzzing
-        '''
+    def get_mutation(self, stage, data=None,fuzzer = False):
+        
         return None

@@ -353,7 +353,7 @@ class Parser(object):
             self.parse_config_desc(desc_buff)
 
     def emit_output(self):
-        print self.root_node.to_code()
+        print(self.root_node.to_code())
 
 
 def main():

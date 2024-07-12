@@ -47,7 +47,7 @@ class Umap2ScanApp(Umap2App):
                 self.start_time = time.time()
                 device = self.load_device(device_name, phy)
                 device.connect()
-                device.run()
+                device.run()#device就是设备类对象
                 device.disconnect()
             except:
                 self.logger.error(traceback.format_exc())
@@ -58,6 +58,7 @@ class Umap2ScanApp(Umap2App):
             self.current_usb_function_supported = False
             time.sleep(2)
         if len(supported):
+            
             self.logger.always('---------------------------------')
             self.logger.always('Found %s supported device(s):' % (len(supported)))
             for i, device_name in enumerate(supported):

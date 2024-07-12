@@ -17,10 +17,10 @@ class Raspdancer:
         GPIO.setup(15, GPIO.OUT)
         GPIO.output(15,GPIO.LOW)
         GPIO.output(15,GPIO.HIGH)
-        spi.openSPI(speed=26000000)
+        device0 = spi.openSPI(speed=26000000)
 
     def __del__(self):
-        spi.closeSPI()
+        spi.closeSPI(self)
         GPIO.output(15,GPIO.LOW)
         GPIO.output(15,GPIO.HIGH)
         GPIO.cleanup()
@@ -29,6 +29,6 @@ class Raspdancer:
         if isinstance(data,str):
             data = [ord(x) for x in data]
         data = tuple(data)
-        data = spi.transfer(data)
+        data = spi.transfer(self,data)
         dataout = "".join([chr(x) for x in data])
         return dataout
