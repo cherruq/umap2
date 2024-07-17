@@ -9,7 +9,6 @@ import logging
 import docopt
 from serial import Serial, PARITY_NONE
 
-print(sys.path)
 
 from umap2.phy.facedancer.max342x_phy import Max342xPhy
 from umap2.phy.gadgetfs.gadgetfs_phy import GadgetFsPhy
@@ -98,7 +97,7 @@ class Umap2App(object):
             if dirpath in sys.path:
                 sys.path.remove(dirpath)
             sys.path.insert(0, dirpath)
-            module = __import__(modulename, globals(), locals(), [], -1)
+            module = __import__(modulename, globals(), locals(), [], 0)
         usb_device = module.usb_device
         kwargs = self.get_user_device_kwargs()
         dev = usb_device(self, phy, **kwargs)
