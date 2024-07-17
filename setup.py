@@ -18,7 +18,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'docopt',
-        'kittyfuzzer @ git+https://github.com/cherruq/kitty.git@master#kittyfuzzer',
+        'kittyfuzzer @ git+https://github.com/cherruq/kitty.git@ab#kittyfuzzer',
         'pyserial',
         'six',
     ],
